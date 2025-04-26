@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Control ESP32</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 20px;
+            margin: 10px;
+            font-size: 18px;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Control ESP32</h2>
+    <div>
+        <button onclick="sendCommand('forward')">FORWARD</button><br>
+        <button onclick="sendCommand('left')">LEFT</button>
+        <button onclick="sendCommand('stop')">STOP</button>
+        <button onclick="sendCommand('right')">RIGHT</button><br>
+        <button onclick="sendCommand('backward')">BACK</button>
+    </div>
+
+    <script>
+        function sendCommand(cmd) {
+            fetch(`/${cmd}`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Lỗi khi gửi lệnh");
+                    console.log(`Đã gửi lệnh: ${cmd}`);
+                })
+                .catch(error => {
+                    console.error("Lỗi:", error);
+                });
+        }
+    </script>
+</body>
+
+</html>
