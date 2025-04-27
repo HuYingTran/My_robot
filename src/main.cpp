@@ -91,6 +91,8 @@ void setup()
 
   server.begin();
   ElegantOTA.begin(&server);
+  mpu6050_init();
+  task_read_mpu6050();
 }
 
 void loop()
