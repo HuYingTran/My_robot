@@ -1,18 +1,29 @@
 #include "espAFMotor.h"
 #include "function.h"
 
+#define SPEED_DEFAULT 150
+
 AF_DCMotor motor1(1); // Bánh trước bên trái
 AF_DCMotor motor2(2); // Bánh trước bên phải
 AF_DCMotor motor3(3); // Bánh sau bên trái
 AF_DCMotor motor4(4); // Bánh sau bên phải
 
+void motor_test() {
+    motor1.run(FORWARD);
+    for(int i = 0; i<255; i+=5){
+    Serial.println(i);
+    motor1.setSpeed(i);
+    delay(5000);
+}
+}
+
 void motor_setup()
 {
     // Cấu hình tốc độ cho mỗi động cơ
-    motor1.setSpeed(150);
-    motor2.setSpeed(150);
-    motor3.setSpeed(150);
-    motor4.setSpeed(150);
+    motor1.setSpeed(SPEED_DEFAULT);
+    motor2.setSpeed(SPEED_DEFAULT);
+    motor3.setSpeed(SPEED_DEFAULT);
+    motor4.setSpeed(SPEED_DEFAULT);
 }
 
 void motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
@@ -26,8 +37,8 @@ void motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
 // Hàm điều khiển tiến
 void moveForward()
 {
-    motor1.run(FORWARD);
-    motor2.run(FORWARD);
+    // motor1.run(FORWARD);
+    // motor2.run(FORWARD);
     motor3.run(FORWARD);
     motor4.run(FORWARD);
 }
