@@ -38,9 +38,10 @@ void initWiFi()
   Serial.print("Connecting to WiFi ..");
   while (WiFi.status() != WL_CONNECTED)
   {
-    Serial.print('.');
+    Serial.print(".");
     delay(1000);
   }
+  delay(2000);
   Serial.println(WiFi.localIP());
 }
 
@@ -91,8 +92,10 @@ void setup()
 
   server.begin();
   ElegantOTA.begin(&server);
-  mpu6050_init();
-  task_read_mpu6050();
+  // mpu6050_init();
+  // task_read_mpu6050();
+  // vl53l0x_init();
+  // task_read_vl53l0x();
 }
 
 void loop()
