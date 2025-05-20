@@ -1,4 +1,5 @@
 #include "espAFMotor.h"
+#include "function.h"
 
 #define SPEED_DEFAULT 150
 
@@ -23,6 +24,14 @@ void motor_setup()
     motor2.setSpeed(SPEED_DEFAULT);
     motor3.setSpeed(SPEED_DEFAULT);
     motor4.setSpeed(SPEED_DEFAULT);
+}
+
+void motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
+{
+    motor1.setSpeed(s1);
+    motor2.setSpeed(s2);
+    motor3.setSpeed(s3);
+    motor4.setSpeed(s4);
 }
 
 // Hàm điều khiển tiến
@@ -86,4 +95,15 @@ void motor_stop()
     motor2.run(RELEASE);
     motor3.run(RELEASE);
     motor4.run(RELEASE);
+}
+
+void moveForward_calib()
+{
+    if (My_robot.g > ERR_CALIB) {
+        motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
+    } else if (My_robot.g < - ERR_CALIB) {
+        motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
+    } else {
+        moveForward();
+    }
 }
