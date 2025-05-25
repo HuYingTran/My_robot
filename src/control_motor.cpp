@@ -26,7 +26,7 @@ void motor_setup()
     motor4.setSpeed(SPEED_DEFAULT);
 }
 
-void motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
+void motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint8_t s4)
 {
     motor1.setSpeed(s1);
     motor2.setSpeed(s2);
@@ -97,13 +97,13 @@ void motor_stop()
     motor4.run(RELEASE);
 }
 
-void moveForward_calib()
-{
-    if (My_robot.g > ERR_CALIB) {
-        motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
-    } else if (My_robot.g < - ERR_CALIB) {
-        motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint4_t s4)
-    } else {
-        moveForward();
-    }
-}
+// void moveForward_calib()
+// {
+//     if (My_robot.g > ERR_CALIB) {
+//         motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint8_t s4)
+//     } else if (My_robot.g < - ERR_CALIB) {
+//         motor_set_peed(uint8_t s1, uint8_t s2, uint8_t s3, uint8_t s4)
+//     } else {
+//         moveForward();
+//     }
+// }

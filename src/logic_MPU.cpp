@@ -29,21 +29,6 @@ void mpu6050_init() {
     time_start = micros();
 }
 
-void read_mpu(void *pvParameters) {
-    float v, r;
-    for (;;) {
-        sensors_event_t a, g, temp;
-        mpu.getEvent(&a, &g, &temp);
-        v = mpu.a.acceleration.x * (micros() - time_start)^2;
-        r = mpu.g.gyro.x * (micros() - time_start);
-        if (xSemaphoreTake(xMutex, portMAX_DELAY) == pdTRUE) {
-            My_robot.g += r;
-            time_start = micros();
-            xSemaphoreGive(mpu6050_Mutex);
-        }
-        vTaskDelay(pdMS_TO_TICKS(10));
-}
-
 // Hàm task đọc MPU6050
 void TaskMPU6050(void *pvParameters)
 {
